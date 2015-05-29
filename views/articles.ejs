@@ -1,0 +1,49 @@
+<html>
+
+<head lang="en">
+	
+	<title>Articles</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+	<br>
+	<br>
+		<h1>Latest</h1>
+		<hr/>
+
+		<% if(posts.length > 0) { posts.forEach(function(post) {%>
+		<div class="panel panel-default">
+  			<div class="panel-body">
+				<h3><%= post.title %> <small>Author: <%= post.author %></small></h3>
+				<hr>
+
+				<p><%=post.body%></p>
+			</div>
+		</div>
+		<% }) } else { %>
+
+		<div class="panel panel-default">
+  			<div class="panel-body" style="text-align: center">
+  				<h2>No Posts Yet ;(</h2>
+  			</div>
+  		</div>
+
+		<% } %>
+
+
+
+	</div>
+</body>
+
+
+</html>
