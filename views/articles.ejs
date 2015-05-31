@@ -14,17 +14,35 @@
 
 </head>
 
+<%
+        function timeConverter(UNIX_timestamp){
+          var a = new Date(UNIX_timestamp);
+          var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          var year = a.getFullYear();
+          var month = months[a.getMonth()];
+          var date = a.getDate();
+          var hour = a.getHours();
+          var min = a.getMinutes();
+          var time = month + '. ' + date + ' ' + year + ' - ' + (hour <= 12 ? hour : hour-12) + ':' + min + ' ' + (hour < 12 ? "AM" : "PM") ;
+          return time;
+
+        }
+%>
+
 <body>
+
+	<%- include ../partials/header.ejs %>
+	
 	<div class="container">
 	<br>
 	<br>
-		<h1>Latest</h1>
+		<h1>Horrorpenguin's Blog</h1>
 		<hr/>
 
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>
 		<div class="panel panel-default">
   			<div class="panel-body">
-				<h3><%= post.title %> <small>Author: <%= post.author %></small></h3>
+				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a>  <small><em><%= timeConverter(post.timestamp) %></em></small></h3>
 				<hr>
 
 				<p><%=post.body%></p>

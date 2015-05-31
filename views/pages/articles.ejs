@@ -1,0 +1,64 @@
+<html>
+
+<head lang="en">
+	
+	<title>Articles</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+
+<%
+        function timeConverter(UNIX_timestamp){
+          var a = new Date(UNIX_timestamp);
+          var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          var year = a.getFullYear();
+          var month = months[a.getMonth()];
+          var date = a.getDate();
+          var hour = a.getHours();
+          var min = a.getMinutes();
+          var time = month + '. ' + date + ' ' + year + ' - ' + (hour <= 12 ? hour : hour-12) + ':' + min + ' ' + (hour < 12 ? "AM" : "PM") ;
+          return time;
+
+        }
+%>
+
+<body>
+	<div class="container">
+	<br>
+	<br>
+		<h1>Horrorpenguin's Blog</h1>
+		<hr/>
+
+		<% if(posts.length > 0) { posts.forEach(function(post) {%>
+		<div class="panel panel-default">
+  			<div class="panel-body">
+				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a>  <small><em><%= timeConverter(post.timestamp) %></em></small></h3>
+				<hr>
+
+				<p><%=post.body%></p>
+			</div>
+		</div>
+		<% }) } else { %>
+
+		<div class="panel panel-default">
+  			<div class="panel-body" style="text-align: center">
+  				<h2>No Posts Yet ;(</h2>
+  			</div>
+  		</div>
+
+		<% } %>
+
+
+
+	</div>
+</body>
+
+
+</html>

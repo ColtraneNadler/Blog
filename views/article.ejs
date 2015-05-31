@@ -1,0 +1,53 @@
+<html>
+
+<head lang="en">
+	
+	<title>Article</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+
+<%
+        function timeConverter(UNIX_timestamp){
+          var a = new Date(UNIX_timestamp);
+          var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          var year = a.getFullYear();
+          var month = months[a.getMonth()];
+          var date = a.getDate();
+          var hour = a.getHours();
+          var min = a.getMinutes();
+          var time = month + '. ' + date + ' ' + year + ' - ' + (hour <= 12 ? hour : hour-12) + ':' + min + ' ' + (hour < 12 ? "AM" : "PM") ;
+          return time;
+
+        }
+%>
+
+<body>
+	<div class="container">
+	<br>
+	<br>
+		<div class="panel panel-default">
+  			<div class="panel-body">
+		<h1><%= post.title %> <small><em><%= timeConverter(post.timestamp) %></em></small></h1>
+		<hr/>
+
+		<br>
+
+		<p stlye="font-size: 20px"><%= post.body %></p>
+		</div>
+		</div>
+
+
+
+	</div>
+</body>
+
+
+</html>
