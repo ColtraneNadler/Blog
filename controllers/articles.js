@@ -21,8 +21,8 @@ var client = require('mongodb').MongoClient;
 module.exports.create = function(req, res) {
 	var blogPost = req.body;
 	console.log(blogPost);
-	blogPost.tags = blogPost.tags.split(', ');
-	console.log(blogPost.tags[2]);
+	//blogPost.tags = blogPost.tags.split(', ');
+	//console.log(blogPost.tags[2]);
 	blogPost.timestamp = Date.now();
 	blogPost.id = randomString(6);
 
@@ -63,8 +63,9 @@ module.exports.id = function(req, res) {
 };
 
 module.exports.categorie = function(req, res) {
-	var categorie = req.body;
-	col.find({"categorie": categorie}).toArray(function(err, blogPosts) {
+	var cat = req.params.categorie;
+	console.log(cat)
+	col.find({"categorie": cat}).toArray(function(err, blogPosts) {
 		if(err) return console.log(err);
 		//res.locals = {posts: blogPosts};
 		res.send(blogPosts)
