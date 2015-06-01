@@ -6,6 +6,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="http://bootswatch.com/journal/bootstrap.min.css">
 
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -38,15 +39,18 @@
 		<hr/>
 
 		<div class="row">
-			<div class="col-sm-8">
+		<div class="col-sm-1">
+		</div>
+			<div class="col-sm-7">
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>
 		<div class="panel panel-default">
   			<div class="panel-body">
 				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a>  <small><em><%= timeConverter(post.timestamp) %></em></small></h3>
 				<hr>
 
-				<img src="..." alt="..." class="img-thumbnail">
-				<p><%=post.desc%></p>
+				    <a href="/articles/<%= post.id %>" class="thumbnail">
+      					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0K-NZAWYaT4tWZCZDr5DKeE8qsABOs8Jan-tY523mh7UNgw" style="width: 100%"/>
+    				</a>
 			</div>
 		</div>
 		<% }) } else { %>
@@ -62,6 +66,7 @@
 
 
 		<%- include ../partials/categories.ejs %>
+
 </body>
 
 

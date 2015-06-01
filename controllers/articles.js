@@ -23,9 +23,9 @@ module.exports.create = function(req, res) {
 	console.log(blogPost);
 	//blogPost.tags = blogPost.tags.split(', ');
 	//console.log(blogPost.tags[2]);
-	blogPost.desc = blogPost.body.split(' ');
-	blogPost.desc.slice(0, 15);
-	blogPost.desc.join(' ');
+	//var description = blogPost.body.split(' ');
+	//var desc = description.slice(0, 10);
+	//blogPost.desc = desc.join(' ');
 	blogPost.timestamp = Date.now();
 	blogPost.id = randomString(6);
 

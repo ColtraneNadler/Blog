@@ -1,6 +1,17 @@
+/*
+
+Created by Coltrane Nadler
+
+Things to do:
+	- Sort articles from newest to oldest, right now its sorted oldest to newest.
+	- Make about page
+
+*/
+
 var express = require('express'),
 	app = express();
 	path = require('path');
+	basicAuth = require('basic-auth')
 
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -16,11 +27,29 @@ var notImplemented = function(req, res) {
 	res.sendStatus(501);
 };
 
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.send(401);
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  if (user.name === 'admin' && user.pass === 'admin') {
+    return next();
+  } else {
+    return unauthorized(res);
+  };
+};
 
 //database init
 var client = require('mongodb').MongoClient;
 
-(function() { client.connect('mongodb://admin:admin@ds031952.mongolab.com:31952/blog', function(err, db) {
+(function() { client.connect('mongodb://***/blog', function(err, db) {
 		if(err) return console.log(err);
 		console.log('Connected to MongoDB.');
 		global.col = db.collection('posts');
@@ -36,7 +65,7 @@ var client = require('mongodb').MongoClient;
 
 	app.post('/articles', articles.create);
 
-	app.get('/articles/new', function(req, res) {
+	app.get('/articles/new', auth, function(req, res) {
 		res.render('pages/new.ejs');
 	});
 
