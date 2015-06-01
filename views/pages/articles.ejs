@@ -4,10 +4,8 @@
 	
 	<title>Articles</title>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://bootswatch.com/journal/bootstrap.min.css">
 
-	<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -36,9 +34,11 @@
 	<div class="container">
 	<br>
 	<br>
-		<h1>Coltrane's Blog</h1>
+		<h1>My Blog</h1>
 		<hr/>
 
+		<div class="row">
+			<div class="col-sm-8">
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>
 		<div class="panel panel-default">
   			<div class="panel-body">
@@ -57,6 +57,16 @@
   		</div>
 
 		<% } %>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+				<h3>Categories</h3>
+				<hr/>
+
+		</div>
+		</div>
 
 
 

@@ -1,6 +1,3 @@
-var articles = [];
-
-
 //ID Generator
 function randomString(length) {
     var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
@@ -19,16 +16,13 @@ function randomString(length) {
 
 var client = require('mongodb').MongoClient;
 
-module.exports.connect = function() { client.connect('mongodb://admin:admin@ds031952.mongolab.com:31952/blog', function(err, db) {
-		if(err) return console.log(err);
-		console.log('Connected to MongoDB.');
-		global.col = db.collection('posts');
-	});
-};
 
+//add description, only going to display descriptions on the articles page.
 module.exports.create = function(req, res) {
 	var blogPost = req.body;
 	console.log(blogPost);
+	blogPost.tags = blogPost.tags.split(', ');
+	console.log(blogPost.tags[2]);
 	blogPost.timestamp = Date.now();
 	blogPost.id = randomString(6);
 
@@ -46,11 +40,10 @@ module.exports.list = function(req, res) {
 
 	col.find().toArray(function(err, blogPosts) {
 		if(err) return console.log(err);
-		articles = blogPosts;
 		
 		res.locals = {posts: blogPosts};
 		res.render('pages/articles.ejs');
-	})
+	});
 
 };
 
@@ -66,5 +59,15 @@ module.exports.id = function(req, res) {
 		} else {
 			res.redirect('/articles');
 		}
-	})
+	});
+};
+
+module.exports.categorie = function(req, res) {
+	var categorie = req.body;
+	col.find({"categorie": categorie}).toArray(function(err, blogPosts) {
+		if(err) return console.log(err);
+		//res.locals = {posts: blogPosts};
+		res.send(blogPosts)
+
+	});
 };

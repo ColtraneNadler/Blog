@@ -43,6 +43,8 @@ var client = require('mongodb').MongoClient;
 
 	app.get('/articles/:articleID', articles.id);
 
+	app.get('/articles/categorie/:categorie', articles.categorie)
+
 	app.put('/articles/:articleID', notImplemented);
 	app.delete('/articles/:articleID', notImplemented);
 
