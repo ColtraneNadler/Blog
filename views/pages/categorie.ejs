@@ -34,7 +34,7 @@
 	<div class="container">
 	<br>
 	<br>
-		<h1>My Blog</h1>
+		<h1>Categorie: <%= categorie %></h1>
 		<hr/>
 
 		<div class="row">
@@ -45,8 +45,7 @@
 				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a>  <small><em><%= timeConverter(post.timestamp) %></em></small></h3>
 				<hr>
 
-				<img src="..." alt="..." class="img-thumbnail">
-				<p><%=post.desc%></p>
+				<p><%=post.body%></p>
 			</div>
 		</div>
 		<% }) } else { %>
@@ -60,8 +59,9 @@
 		<% } %>
 		</div>
 
-
 		<%- include ../partials/categories.ejs %>
+	</div>
+	</div>
 </body>
 
 

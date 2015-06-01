@@ -23,6 +23,9 @@ module.exports.create = function(req, res) {
 	console.log(blogPost);
 	//blogPost.tags = blogPost.tags.split(', ');
 	//console.log(blogPost.tags[2]);
+	blogPost.desc = blogPost.body.split(' ');
+	blogPost.desc.slice(0, 15);
+	blogPost.desc.join(' ');
 	blogPost.timestamp = Date.now();
 	blogPost.id = randomString(6);
 
@@ -67,8 +70,13 @@ module.exports.categorie = function(req, res) {
 	console.log(cat)
 	col.find({"categorie": cat}).toArray(function(err, blogPosts) {
 		if(err) return console.log(err);
-		//res.locals = {posts: blogPosts};
-		res.send(blogPosts)
+		if(blogPosts.length > 0) {
+			//res.locals = {posts: blogPosts};
+			res.locals = {posts: blogPosts, categorie: cat};
+			res.render('pages/categorie.ejs')
+		} else {
+			res.redirect('/articles')
+		}
 
 	});
 };
