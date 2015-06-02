@@ -39,15 +39,41 @@ module.exports.create = function(req, res) {
 };
 
 
-module.exports.list = function(req, res) {
+module.exports.home = function(req, res) {
 
 	col.find().toArray(function(err, blogPosts) {
 		if(err) return console.log(err);
+		global.fullPosts = blogPosts.reverse();
+		var posts = blogPosts.slice(0, 5);
+		console.log(blogPosts.length)
 		
-		res.locals = {posts: blogPosts};
+		res.locals = {posts: posts, num: 1};
 		res.render('pages/articles.ejs');
 	});
 
+};
+
+
+module.exports.list = function(req, res) {
+	var num = parseInt(req.params.num);
+	if(num === 1) {
+		res.redirect('/articles'); 
+	} else {
+
+		var max = num * 5, min = max - 5;
+		if(fullPosts.length > min) {
+		var posts = fullPosts.slice(min, max);
+		console.log(posts.length);
+		if(posts.length > 0) {
+			res.locals = {posts: posts, num: num};
+			res.render('pages/articles.ejs');
+		} else {
+			res.redirect('/articles')
+		}
+	} else {
+		res.redirect('/articles')
+	}
+};
 };
 
 
