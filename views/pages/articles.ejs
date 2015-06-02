@@ -1,17 +1,7 @@
 <html>
 
-<head lang="en">
-	
-	<title>Articles</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="http://bootswatch.com/journal/bootstrap.min.css">
 
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-</head>
+<%- include ../partials/head.ejs %>
 
 <%
         function timeConverter(UNIX_timestamp){
@@ -33,19 +23,18 @@
 	<%- include ../partials/header.ejs %>
 
 	<div class="container">
-	<br>
-	<br>
-		<h1>My Blog</h1>
+		<h1>CMS Software</h1>
 		<hr/>
 
 		<div class="row">
-		<div class="col-sm-1">
-		</div>
+			<div class="col-sm-1">
+			</div>
 			<div class="col-sm-7">
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>
 		<div class="panel panel-default">
   			<div class="panel-body">
-				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a>  <small><em><%= timeConverter(post.timestamp) %></em></small></h3>
+				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a></h3>
+				<p>By <a href="/about"><span color="red">John Snow</span></a> on <%= timeConverter(post.timestamp)%> </p>
 				<hr>
 
 				    <a href="/articles/<%= post.id %>" class="thumbnail">
@@ -64,8 +53,20 @@
 		<% } %>
 		</div>
 
-
 		<%- include ../partials/categories.ejs %>
+
+
+		<footer>
+		<div>
+		<% pageNum = num + 1; pageNump = num - 1;
+		if(pageNum > 2) {%>
+			<a href="/articles/prev/<%= pageNump %>" class="btn btn-primary">Newer Posts</a>
+			<% } %>
+			<a href="/articles/prev/<%= pageNum %>" class="btn btn-primary">Older Posts</a>
+		</div>
+		</footer>
+
+		</div>
 
 </body>
 
