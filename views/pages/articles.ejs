@@ -27,9 +27,7 @@
 		<hr/>
 
 		<div class="row">
-			<div class="col-sm-1">
-			</div>
-			<div class="col-sm-7">
+			<div class="col-sm-8">
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>
 		<div class="panel panel-default">
   			<div class="panel-body">
@@ -58,12 +56,12 @@
 
 		<footer>
 		<div>
-		<% pageNum = num + 1; pageNump = num - 1;
-		if(pageNum > 2) {%>
-			<a href="/articles/prev/<%= pageNump %>" class="btn btn-primary">Newer Posts</a><br><br>
-			<% } %>
+		<% pageNum = num + 1; pageNump = num - 1; %>
 			<% if(posts.length == 5) { %>
-			<a href="/articles/prev/<%= pageNum %>" class="btn btn-primary">Older Posts</a>
+			<a href="/articles/prev/<%= pageNum %>" style="margin-top: 5px"class="btn btn-primary">Older Posts</a>
+			<% } %>
+		<% if(pageNum > 2) {%>
+			<a href="/articles/prev/<%= pageNump %>" style="margin-top: 5px" class="btn btn-primary">Newer Posts</a><br><br>
 			<% } %>
 		</div>
 		</footer>

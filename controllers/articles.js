@@ -19,8 +19,13 @@ var client = require('mongodb').MongoClient;
 
 //add description, only going to display descriptions on the articles page.
 module.exports.create = function(req, res) {
+    if(req.session.passport.user === undefined) {
+    	res.redirect('/login');
+    }
+    
 	var blogPost = req.body;
-	console.log(blogPost);
+	console.log(req.body)
+	//console.log(blogPost);
 	//blogPost.tags = blogPost.tags.split(', ');
 	//console.log(blogPost.tags[2]);
 	//var description = blogPost.body.split(' ');
@@ -29,9 +34,10 @@ module.exports.create = function(req, res) {
 	blogPost.timestamp = Date.now();
 	blogPost.id = randomString(6);
 
+	console.log(blogPost);
 	col.insert(blogPost, function(err, docs) {
 		if(err) return console.log(err);
-		console.log('Posted: ' + docs);
+		console.log('Posted.');
 	})
 
 	res.redirect('/articles')
@@ -65,13 +71,13 @@ module.exports.list = function(req, res) {
 		var posts = fullPosts.slice(min, max);
 		console.log(posts.length);
 		if(posts.length > 0) {
-			res.locals = {posts: posts, num: num};
+			res.locals = {posts: posts, num: num, user: req.user.username};
 			res.render('pages/articles.ejs');
 		} else {
-			res.redirect('/articles')
+			res.render('pages/error.ejs')
 		}
 	} else {
-		res.redirect('/articles')
+		res.render('pages/error.ejs')
 	}
 };
 };
@@ -86,7 +92,7 @@ module.exports.id = function(req, res) {
 			res.locals = {post: doc};
 			res.render('pages/article.ejs');
 		} else {
-			res.redirect('/articles');
+			res.render('pages/error.ejs')
 		}
 	});
 };
@@ -101,7 +107,7 @@ module.exports.categorie = function(req, res) {
 			res.locals = {posts: blogPosts, categorie: cat};
 			res.render('pages/categorie.ejs')
 		} else {
-			res.redirect('/articles')
+			res.render('pages/error.ejs')
 		}
 
 	});
