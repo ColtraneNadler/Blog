@@ -1,9 +1,10 @@
 var passport = require('passport'),
-	LocalStrategy = require('passport-local').Strategy;
+	LocalStrategy = require('passport-local').Strategy,
+	auth = require('./../config/auth');
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
-		if(username === 'admin' && password === 'admin') {
+		if(username === auth.username && password === auth.password) {
 			return done(null, {username: 'admin'})
 		}
 
