@@ -19,12 +19,9 @@ var client = require('mongodb').MongoClient;
 
 //add description, only going to display descriptions on the articles page.
 module.exports.create = function(req, res) {
-    if(req.session.passport.user === undefined) {
-    	res.redirect('/login');
-    }
-    
 	var blogPost = req.body;
 	console.log(req.body)
+	blogPost.author = req.session.passport.user.name.username;
 	//console.log(blogPost);
 	//blogPost.tags = blogPost.tags.split(', ');
 	//console.log(blogPost.tags[2]);
@@ -52,8 +49,16 @@ module.exports.home = function(req, res) {
 		global.fullPosts = blogPosts.reverse();
 		var posts = blogPosts.slice(0, 5);
 		console.log(blogPosts.length)
-		
-		res.locals = {posts: posts, num: 1};
+
+			if(req.session.passport.user !== undefined) { 
+				res.locals = {posts: posts, num: 1, user: req.session.passport.user.name.username};
+				console.log(req.session.passport.user)
+			} else {
+				res.locals = {posts: posts, num: 1, user: undefined};
+				console.log(req.session.passport.user)
+			}
+
+		//res.locals = {posts: posts, num: 1};
 		res.render('pages/articles.ejs');
 	});
 
@@ -71,7 +76,7 @@ module.exports.list = function(req, res) {
 		var posts = fullPosts.slice(min, max);
 		console.log(posts.length);
 		if(posts.length > 0) {
-			res.locals = {posts: posts, num: num, user: req.user.username};
+			res.locals = {posts: posts, num: num};
 			res.render('pages/articles.ejs');
 		} else {
 			res.render('pages/error.ejs')

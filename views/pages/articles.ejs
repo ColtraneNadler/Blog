@@ -22,10 +22,9 @@
 
 	<%- include ../partials/header.ejs %>
 
-	<div class="container">
+	<div class="container articlesWrapper">
 		<h1>CMS Software</h1>
-		<hr/>
-
+		<hr class="hr-fixed"/>
 		<div class="row">
 			<div class="col-sm-8">
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>
@@ -49,10 +48,6 @@
   		</div>
 
 		<% } %>
-		</div>
-
-		<%- include ../partials/categories.ejs %>
-
 
 		<footer>
 		<div>
@@ -65,6 +60,11 @@
 			<% } %>
 		</div>
 		</footer>
+		</div>
+
+		<%- include ../partials/categories.ejs %>
+
+
 
 		</div>
 

@@ -1,0 +1,45 @@
+body, h1, h2, h3, h4, h5, div {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: #333333 top no-repeat fixed;
+}
+
+.articlesWrapper {
+	margin-top: 65px;
+	background-color: #EBEBEB;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+hr {
+	border-color: #A9A9A9;
+}
+
+.hr-fixed { 
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+	border: 2px solid #A9A9A9;
+}
+
+.navbar {
+	padding-bottom: -3;
+	margin-bottom: 0;
+}
+
+.navbar-default {
+	background: #00CCCC;
+	padding-bottom: 20px;
+	margin-bottom: -20px;
+	/* Takes away that ANNOYING little shit of a bottom border */
+	border: 0;
+}
+
+.navbar-nav {
+	margin-top: 20px;
+}

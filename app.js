@@ -21,9 +21,12 @@ var express = require('express'),
 
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var articles = require('./controllers/articles');
 var conf = require('./config/auth');
 
+app.use(express.static(__dirname + '/assets'));
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(session({
@@ -59,6 +62,9 @@ var client = require('mongodb').MongoClient;
 	})
 	app.post('/articles', articles.create);
 	app.get('/articles/new', function(req, res) {
+    if(req.session.passport.user === undefined) {
+    	res.redirect('/login');
+    }
 		res.render('pages/new.ejs');
 	});
 	app.get('/articles/:articleID', articles.id);
@@ -69,7 +75,9 @@ var client = require('mongodb').MongoClient;
 	app.get('/about', function(res, res) {
 		res.render('pages/about.ejs')
 	});
-	app.get('/login', res.render('pages/login.ejs'))
+	app.get('/login', function(req, res) {
+		res.render('pages/login.ejs');
+	});
 	app.post('/login', passport.authenticate('local', {
 		failuserRedirect: '/login',
 		successRedirect: '/',

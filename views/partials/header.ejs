@@ -1,20 +1,105 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header" style="margin-left: 5%">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">CMS Software</a>
-    </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="/about"><a href="/about">About <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">null4now</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
+    <!-- Navigation -->
+      <nav class="navbar navbar-default" role="navigation" style="margin: -2">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header page-scroll" id="add">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="width: 50px; height: 43px">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span style="color: white" class="glyphicon glyphicon-circle-arrow-down"></span>
+                  </button>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                      <li>
+                        <a href="/calendar" id="nli">Mixtapes</a>
+                      </li>
+                      <li>
+                          <a href="/roster" id="nli">Albums</a>
+                      </li>
+                      <li>
+                        <a href="/" id="nli" style="font-size: 20px">RADIOPHONIC</a>
+                      </li>
+                      <li>
+                          <a href="/about" id="nli">Songs</a>
+                      </li>
+                      <li>
+                          <a href="/contact" id="nli">Hot List</a>
+                      </li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+          <!-- <div style="background-color: #161616; height: 30px; width: 100%"></div> -->
+      </nav>
+          <div style="background: #0099FF; height: 20px; width: 100%; margin-bottom: -65; margin-top: 0"></div>
+
+      <style>
+        #nli {
+          color: #E6E6E6;
+        }
+
+        #nli:hover {
+          color: #B8B8B8;
+        }
+
+        .navbar-collapse {
+          text-align:center;
+      }
+  
+      .navbar-nav {
+          display:inline-block;
+          float:none;
+      }
+      </style>
+
+
+
+<a href="#" id="back-to-top" class="btn btn-default"><span class="glyphicon glyphicon-chevron-up" style="margin-top: 10"></span></a>
+
+<style>
+#back-to-top {
+text-align: center;
+background: white;
+opacity: 0.6;
+margin: 10;
+position: fixed;
+bottom: 0;
+right: 0;
+z-index: 100;
+width: 50px;
+height: 50px;
+display: none;
+}
+
+#back-to-top i {
+  font-size: 60px;
+}
+</style>
+
+<script>
+jQuery(document).ready(function() {
+  $('#back-to-top').hide();
+    var offset = 100;
+    var duration = 300;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('#back-to-top').fadeIn(duration);
+        } else {
+            jQuery('#back-to-top').fadeOut(duration);
+        }
+    });
+
+    jQuery('.back-to-top').click(function(event) {
+        event.preventDefault();
+        jQuery('html, body').animate({scrollTop: 0}, duration);
+        return false;
+    })
+});
+</script>
+
+
