@@ -21,18 +21,10 @@
 <body>
 
 <div style="border: 16px solid black; background: black">
-	<!--<span style="float: right; color: white; margin-top: -10">Twitter, Insta, Other Shit</span>-->
 </div>
 	<div class="container articlesWrapper">
 	<br><br><br>
-		<h1 style="text-align: center; font-size: 48px"><a href="/" style="color: black">RADIOPHONIC</a></h1>
-		<hr class="hr-fixed"/>
-		<ul id="nav">
-			<li><a href="/articles/categorie/songs">Songs</a></li>
-			<li><a href="/articles/categorie/mixtapes">Mixtapes</a></li>
-			<li><a href="/articles/categorie/albums">Albums</a></li>
-			<li><a href="/articles/hot">Hot</a></li>
-		</ul>
+		<%- include ../partials/header.ejs %>
 		<div class="row">
 			<div class="col-sm-8">
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>

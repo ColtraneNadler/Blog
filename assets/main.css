@@ -30,7 +30,7 @@ body {
 	background-color: #EBEBEB;
 	*/
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 230px;
 }
 
 hr {
@@ -39,11 +39,10 @@ hr {
 
 .hr-fixed { 
 	width: 100%;
-	margin-left: -30;
-	margin-right: -60;
 	padding: 0;
 	border: 2px solid #333333;
 }
+
 
 #nav {
 	text-align: center;
@@ -77,10 +76,10 @@ hr {
 	background: #00CCCC;
 	padding-bottom: 20px;
 	margin-bottom: -20px;
-	/* Takes away that ANNOYING little shit of a bottom border */
 	border: 0;
 }
 
 .navbar-nav {
 	margin-top: 20px;
 }
+

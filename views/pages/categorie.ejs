@@ -16,14 +16,19 @@
           return time;
 
         }
+
+        String.prototype.capit = function() {
+    		return this.charAt(0).toUpperCase() + this.slice(1);
+		}
 %>
 
 <body>
-
-	<%- include ../partials/header.ejs %>
+<div style="border: 16px solid black; background: black"></div>
 
 	<div class="container articlesWrapper">
-		<h1>Categorie: <%= categorie %></h1>
+	<br><br><br>
+	<%- include ../partials/header.ejs %>
+		<h1><%= categorie.capit() %></h1>
 		<hr class="hr-fixed">
 
 		<div class="row">
