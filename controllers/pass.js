@@ -4,7 +4,7 @@ var passport = require('passport'),
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
-		if(username === auth.username && password === auth.passwordå) {
+		if(username === auth.username && password === auth.password) {
 			return done(null, {username: 'admin'})
 		}
 

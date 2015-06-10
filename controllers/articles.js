@@ -107,13 +107,9 @@ module.exports.categorie = function(req, res) {
 	console.log(cat)
 	col.find({"categorie": cat}).toArray(function(err, blogPosts) {
 		if(err) return console.log(err);
-		if(blogPosts.length > 0) {
 			//res.locals = {posts: blogPosts};
 			res.locals = {posts: blogPosts, categorie: cat};
 			res.render('pages/categorie.ejs')
-		} else {
-			res.render('pages/error.ejs')
-		}
 
 	});
 };
