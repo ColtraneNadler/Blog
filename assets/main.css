@@ -3,13 +3,36 @@ body, h1, h2, h3, h4, h5, div {
 	margin: 0;
 }
 
+a {
+	color: #00B8B8;
+    text-decoration: none;
+
+}
+
+a:hover {
+	color: #66D4D4;
+    text-decoration: none;
+}
+
+h1 {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 550;
+}
+
 body {
 	background: #333333 top no-repeat fixed;
 }
 
+.container {
+
+}
+
 .articlesWrapper {
-	margin-top: 65px;
+	margin-top: 0px;
+	background-color: white;
+	/*
 	background-color: #EBEBEB;
+	*/
 	padding-top: 20px;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
@@ -21,10 +44,33 @@ hr {
 
 .hr-fixed { 
 	width: 100%;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: -30;
+	margin-right: -60;
 	padding: 0;
-	border: 2px solid #A9A9A9;
+	border: 2px solid #333333;
+}
+
+#nav {
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+#nav li {
+	display: inline;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+#nav li a {
+	font-family: 'Ubuntu', 'sans-serif';
+	font-size: 20px;
+}
+
+#nav li a:hover {
+	color: #66D4D4;
+    text-decoration: none;
 }
 
 .navbar {
