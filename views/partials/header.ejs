@@ -1,11 +1,11 @@
 
-    <h1 style="text-align: center; font-size: 48px"><a href="/" style="color: black">BLOG</a></h1>
+
+    <h1 style="text-align: center; font-size: 48px"><a href="/" style="color: #4E4E4E; text-decoration: none">CMS Software</a></h1>
     <hr class="hr-fixed"/>
     <ul id="nav">
-      <li><a href="/articles/categorie/songs">Songs</a></li>
-      <li><a href="/articles/categorie/mixtapes">Mixtapes</a></li>
-      <li><a href="/articles/categorie/albums">Albums</a></li>
+      <li><a href="/articles/" <% if(global.page === 'new') {%>style="color: black"<% } %>>New</a></li>
       <li><a href="/articles/hot">Hot</a></li>
+      <li><a href="/about" <% if(global.page === 'about') {%>style="color: black"<% } %>>About</a></li>
     </ul>
 
 

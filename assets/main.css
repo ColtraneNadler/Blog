@@ -12,29 +12,24 @@
 
 */
 
-body, h1, h2, h3, h4, h5, div {
+* {
 	padding: 0;
 	margin: 0;
 }
 
-a {
+body {
+	background: #333333 top no-repeat fixed;
+}
+
+#nav a {
 	color: #00B8B8;
     text-decoration: none;
 
 }
 
-a:hover {
+#nav a:hover {
 	color: #66D4D4;
     text-decoration: none;
-}
-
-h1 {
-	font-family: 'Ubuntu', sans-serif;
-	font-weight: 550;
-}
-
-body {
-	background: #333333 top no-repeat fixed;
 }
 
 .articlesWrapper {
@@ -95,5 +90,20 @@ hr {
 
 .navbar-nav {
 	margin-top: 20px;
+}
+
+.top li {
+	display: inline;
+	padding: 4px;
+	margin-top: -10px;
+	padding-top: -10px;
+}
+
+.top li a {
+	color: #808080;
+}
+
+.top li a:hover {
+	color: #4D4D4D;
 }
 

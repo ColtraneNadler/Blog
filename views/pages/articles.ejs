@@ -1,5 +1,6 @@
 <html>
 
+<% global.page = 'new' %>
 
 <%- include ../partials/head.ejs %>
 
@@ -20,7 +21,12 @@
 
 <body>
 
-<div style="border: 16px solid black; background: black">
+<div style="border: 4px solid back; background: black; height: 30px;">
+	<ul class="top" style="display: inline; float: right; padding: 8px; padding-right: 30px; padding-top: -10px; margin-top: -5px">
+		<li><a href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
+		<li><a href="https://github.com"><i class="fa fa-github"></i></a></li>
+		<li><a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+	</ul>
 </div>
 	<div class="container articlesWrapper">
 	<br><br><br>
@@ -30,13 +36,17 @@
 		<% if(posts.length > 0) { posts.forEach(function(post) {%>
 		<div class="panel panel-default">
   			<div class="panel-body">
-				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a></h3>
-				<p>By <a href="/about"><span color="red">John Snow</span></a> on <%= timeConverter(post.timestamp)%> </p>
-				<hr>
-
-				    <a href="/articles/<%= post.id %>" class="thumbnail">
+  			<div class="row" style="padding-top: 10px">
+  			<div class="col-lg-4">
+  			  			<a href="/articles/<%= post.id %>" class="thumbnail" style="width: 100%">
       					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGk0K-NZAWYaT4tWZCZDr5DKeE8qsABOs8Jan-tY523mh7UNgw" style="width: 100%"/>
     				</a>
+  			</div>
+  			<div class="col-sm-8">
+				<h3><a href="/articles/<%= post.id %>"><%= post.title %></a></h3>
+				<p>By <a href="/about"><span color="red">John Snow</span></a> on <%= timeConverter(post.timestamp)%> </p>
+			</div>
+			</div>
 			</div>
 		</div>
 		<% }) } else { %>

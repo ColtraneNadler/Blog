@@ -4,11 +4,18 @@
 
 <body>
 
-	<%- include ../partials/header.ejs %>
+<div style="border: 4px solid back; background: black; height: 30px;">
+  <ul class="top" style="display: inline; float: right; padding: 8px; padding-right: 30px; padding-top: -10px; margin-top: -5px">
+    <li><a href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
+    <li><a href="https://github.com"><i class="fa fa-github"></i></a></li>
+    <li><a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+  </ul>
+</div>
 
-	<div class="container">
-	<br>
-	<br>
+  <div class="container articlesWrapper">
+  <br><br><br>
+    <%- include ../partials/header.ejs %>
+  
 		<div class="panel panel-default">
   			<div class="panel-body">
 		<h1>New Post</h1>
