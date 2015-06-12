@@ -1,6 +1,10 @@
 # Node Blog  
 CMS Software written in Express on NodeJS  
 *Author: Coltrane Nadler*  
+
+### Demo  
+Click [here](http://104.236.239.153:3000/)  
+  
   
 ## Installing  
 ```bash  
