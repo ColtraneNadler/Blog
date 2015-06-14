@@ -107,3 +107,26 @@ hr {
 	color: #4D4D4D;
 }
 
+.footer {
+	padding: 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #232323;
+	margin-top: -38px;
+}
+
+.footer li {
+	margin: auto;
+	display: inline;
+	list-style-type: none;
+}
+
+.footer li a {
+	text-decoration: none;
+	color: #E5E5E5;
+}
+
+.footer li a:hover {
+	text-decoration: none;
+	color: #898989;
+}

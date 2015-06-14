@@ -20,11 +20,11 @@ var express = require('express'),
 	passport = require('./controllers/pass.js');
 
 var bodyParser = require('body-parser');
-var morgan = require('morgan');
+var morgan = require('morgan'); 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var articles = require('./controllers/articles');
-var conf = require('./config/auth');
+var conf = require('./config/auth'); 
 
 app.use(express.static(__dirname + '/assets'));
 app.use(morgan('dev'));
