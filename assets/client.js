@@ -7,6 +7,7 @@ $('#form').submit(function() {
 		body: $('#body').val(),
 		thumbnail: $('#thumb').files[0]
 	}
+	
 	console.log(post);
 
 
