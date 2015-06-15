@@ -60,6 +60,7 @@ var client = require('mongodb').MongoClient;
 	app.get('/', function(req, res) {
 		res.redirect('/articles')
 	})
+	app.post('/articles/edit/:id', articles.editCreate);
 	app.post('/articles', articles.create);
 	app.get('/articles/new', function(req, res) {
     if(req.session.passport.user === undefined) {
@@ -67,6 +68,7 @@ var client = require('mongodb').MongoClient;
     }
 		res.render('pages/new.ejs');
 	});
+	app.get('/articles/edit/:articleID', articles.edit);
 	app.get('/articles/:articleID', articles.id);
 	app.get('/articles/prev/:num', articles.list)
 	app.get('/articles/categorie/:categorie', articles.categorie)
@@ -85,7 +87,6 @@ var client = require('mongodb').MongoClient;
 	app.get('*', function(req, res) {
 		res.render('pages/error.ejs');
 	});
-
 
 app.listen(3000, function() {
 	console.log('Server running.')

@@ -130,3 +130,7 @@ hr {
 	text-decoration: none;
 	color: #898989;
 }
+
+.body p {
+	font-size: 16px;
+}

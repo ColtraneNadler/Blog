@@ -5,22 +5,22 @@ $('#form').submit(function() {
 	var post = {
 		title: $('#title').val(),
 		body: $('#body').val(),
-		thumbnail: $('#thumb').files[0]
+		thumbnail: $('#thumb').val();
 	}
-	
+
 	console.log(post);
 
 
-	/*$.ajax({
+	$.ajax({
 		type: 'POST',
 		url: url,
 		data: post,
-        enctype: 'multipart/form-data',
 		success: function() {
 			console.log('Posted!')
 		}
-	});*/
+	});
 
+	
 	return false
 });
 

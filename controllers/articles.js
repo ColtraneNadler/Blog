@@ -1,4 +1,7 @@
 //ID Generator
+var marked = require('marked');
+
+
 function randomString(length) {
     var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
 
@@ -20,8 +23,10 @@ var client = require('mongodb').MongoClient;
 //add description, only going to display descriptions on the articles page.
 module.exports.create = function(req, res) {
 	var blogPost = req.body;
-	console.log(req.body)
+	blogPost.raw = blogPost.body;
+	blogPost.body = marked(blogPost.body);
 	blogPost.author = req.session.passport.user.name.username;
+	console.log('Marked: ' + blogPost.body)
 	//console.log(blogPost);
 	//blogPost.tags = blogPost.tags.split(', ');
 	//console.log(blogPost.tags[2]);
@@ -41,6 +46,21 @@ module.exports.create = function(req, res) {
 
 };
 
+module.exports.editCreate = function(req, res) {
+	console.log('Posted, checking')
+	var blogPost = req.body;
+	blogPost.id = req.params.id;
+	blogPost.raw = blogPost.body;
+	blogPost.body = marked(blogPost.body);
+	console.log(blogPost);
+	col.update({id: blogPost.id}, {$set: {body: blogPost.body, raw: blogPost.raw}}, function(err, docs) {
+		if(err) return console.log(err);
+		console.log('Updated')
+	})
+	
+	res.redirect('/articles')
+
+}
 
 module.exports.home = function(req, res) {
 
@@ -96,6 +116,24 @@ module.exports.id = function(req, res) {
 			console.log(doc)
 			res.locals = {post: doc};
 			res.render('pages/article.ejs');
+		} else {
+			res.render('pages/error.ejs')
+		}
+	});
+};
+
+module.exports.edit = function(req, res) {
+    if(req.session.passport.user === undefined) {
+    	res.render('pages/error.ejs');
+    }
+
+	var ID = req.params.articleID;
+	col.findOne({id: ID}, function(err, doc) {
+		if(err) return console.log;
+		if(doc) {
+			console.log(doc)
+			res.locals = {post: doc};
+			res.render('pages/edit.ejs');
 		} else {
 			res.render('pages/error.ejs')
 		}

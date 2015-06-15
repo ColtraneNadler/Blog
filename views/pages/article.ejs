@@ -12,7 +12,7 @@
           var date = a.getDate();
           var hour = a.getHours();
           var min = a.getMinutes();
-          var time = month + '. ' + date + ' ' + year + ' - ' + (hour <= 12 ? hour : hour-12) + ':' + min + ' ' + (hour < 12 ? "AM" : "PM") ;
+          var time = month + '. ' + date + ' ' + year;
           return time;
 
         }
@@ -20,7 +20,7 @@
 
 <body>
 
-<div style="border: 4px solid #232323; background: #232323; height: 30px;">
+<div style="border: 4px solid #232323; background: #232323; height: 38px;">
   <ul class="top" style="display: inline; float: right; padding: 8px; padding-right: 30px; padding-top: -10px; margin-top: -5px">
     <li><a href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
     <li><a href="https://github.com"><i class="fa fa-github"></i></a></li>
@@ -31,20 +31,33 @@
 <div class="container articlesWrapper">
 <br><br><br>
 	<%- include ../partials/header.ejs %>
+  <div class="row">
+  <div class="col-sm-8">
 		<div class="panel panel-default">
   			<div class="panel-body">
-		<h1><%= post.title %> <small><em><%= timeConverter(post.timestamp) %></em></small></h1>
-		<hr/>
+        <div class="row">
+        <div class="col-xs-6 col-sm-6">
+        <a class="thumbnail"><img src="<%= post.thumb %>" style="width: 100%"></a>
+        <br>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+		<h3><%= post.title %></h3>
+    <p>By <a href="/about"><%= post.author %></a> on <%= timeConverter(post.timestamp) %></p>
+    </div>
+      </div>
 
+
+          <hr class="hr"/>
 		<br>
 
-		<p stlye="font-size: 20px"><%= post.body %></p>
+		<div class="body"><%- post.body %></div>
 		</div>
 		</div>
-
-
+    </div>
+      <%- include ../partials/categories.ejs %>
 
 	</div>
+  </div>
 </body>
 
 
