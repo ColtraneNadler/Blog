@@ -18,9 +18,8 @@ Input login credentials, and mongo credentials in _Blog/config/auth.js_
 Once the application is running, and has successfully established a connection to the provided MongoDB server, login to the blog via http://localhost:3000/login. Make a new post via route http://localhost:3000/articles/new.  
   
 ##ToDo List  
-* Store thumbnails via base64 in the mongo collection.  
+* Store thumbnails via base64 in the mongo collection, and allow users to upload thumbnail image files.  
 * Pretty up the design.  
 * Admin panel, to create/remove new users(authors) on the fly.
-* Implement Markdown, for making new posts.
 
 
