@@ -114,7 +114,7 @@ module.exports.id = function(req, res) {
 		if(err) return console.log;
 		if(doc) {
 			console.log(doc)
-			res.locals = {post: doc};
+			res.locals = {post: doc, user: req.session.passport.user};
 			res.render('pages/article.ejs');
 		} else {
 			res.render('pages/error.ejs')
@@ -151,3 +151,17 @@ module.exports.categorie = function(req, res) {
 
 	});
 };
+
+module.exports.remove = function(req, res) {
+    if(req.session.passport.user === undefined) {
+    	res.render('pages/error.ejs');
+    	res.end();
+    }
+
+	var id = req.params.id;
+	col.remove({id: id}, function(err, doc) {
+		if(err) return console.log(err);
+		console.log('Delted id: ' + id)
+	})
+	res.redirect('/articles')
+}

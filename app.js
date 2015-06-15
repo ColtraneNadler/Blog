@@ -68,6 +68,7 @@ var client = require('mongodb').MongoClient;
     }
 		res.render('pages/new.ejs');
 	});
+	app.get('/articles/remove/:id', articles.remove)
 	app.get('/articles/edit/:articleID', articles.edit);
 	app.get('/articles/:articleID', articles.id);
 	app.get('/articles/prev/:num', articles.list)
